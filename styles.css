@@ -80,7 +80,7 @@ body.tema-custom::before {
 }
 
 body.tema-default::before {
-    background-image: url('/sci-fi-bg.jpg');
+    background-image: url('sci-fi-bg.jpg');
 }
 body.tema-frutiger-metro::before {
     background-image: url('frutiger-metro-bg.jpg');
