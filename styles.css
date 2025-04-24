@@ -1,10 +1,14 @@
- /* Animaciones de transición */
+/* Animaciones de transición */
 .fade {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-}.fade-in {
+}
+
+.fade-in {
     opacity: 1 !important;
-}/* Animación de desplegue para la ventana de configuración */
+}
+
+/* Animación de desplegue para la ventana de configuración */
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -14,18 +18,26 @@
         transform: translateY(0);
         opacity: 1;
     }
-}#config {
+}
+
+#config {
     animation: slideDown 0.5s ease-out forwards;
-}/* Animación para logros desbloqueados */
+}
+
+/* Animación para logros desbloqueados */
 @keyframes achievementPop {
     0% { transform: scale(0); opacity: 0; }
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
-}@keyframes tutorialArrow {
+}
+
+@keyframes tutorialArrow {
     0% { transform: translateX(0); }
     50% { transform: translateX(10px); }
     100% { transform: translateX(0); }
-}/* Estilos generales */
+}
+
+/* Estilos generales */
 body {
     font-family: 'Space Mono', monospace;
     color: #fff;
@@ -36,17 +48,21 @@ body {
     position: relative;
     background-color: #1a1a1a;
     transition: all 0.3s ease;
-}body.high-contrast {
+}
+
+body.high-contrast {
     filter: grayscale(100%) contrast(200%);
     background-color: #000;
     color: #fff;
-}/* Estilos para temas con imágenes de fondo */
+}
+
+/* Estilos para temas con imágenes de fondo */
 body.tema-default::before,
 body.tema-frutiger-metro::before,
 body.tema-pastel::before,
 body.tema-vaporwave::before,
 body.tema-dark-academia::before,
-body.tema-frutiger-aero-2::before,
+body.tema-cyberpunk::before,
 body.tema-frutiger-aero::before,
 body.tema-galaxy::before,
 body.tema-custom::before {
@@ -61,33 +77,37 @@ body.tema-custom::before {
     background-repeat: no-repeat;
     filter: blur(5px);
     z-index: -1;
-}body.tema-default::before {
-    background-image: url('sci-fi-bg.jpg');
+}
+
+body.tema-default::before {
+    background-image: url('images/sci-fi-bg.jpg');
 }
 body.tema-frutiger-metro::before {
-    background-image: url('frutiger-metro-bg.jpg');
+    background-image: url('images/frutiger-metro-bg.jpg');
 }
 body.tema-pastel::before {
-    background-image: url('pastel-frutiger-metro-bg.jpg');
+    background-image: url('images/pastel-frutiger-metro-bg.jpg');
 }
 body.tema-vaporwave::before {
-    background-image: url('vaporwave-bg.jpg');
+    background-image: url('images/vaporwave-bg.jpg');
 }
 body.tema-dark-academia::before {
-    background-image: url('dark-academia-frutiger-metro-bg.jpg');
+    background-image: url('images/dark-academia-frutiger-metro-bg.jpg');
 }
-body.tema-frutiger-aero-2::before {
-    background-image: url('frutiger-aero-2-bg.jpg');
+body.tema-cyberpunk::before {
+    background-image: url('images/frutiger-aero-bg.jpg');
 }
 body.tema-frutiger-aero::before {
-    background-image: url('frutiger-aero-bg.jpg');
+    background-image: url('images/frutiger-aero-bg.jpg');
 }
 body.tema-galaxy::before {
-    background-image: url('galaxia-bg.jpg');
+    background-image: url('images/galaxia-bg.jpg');
 }
 body.tema-custom::before {
-    background-image: url('custom-bg.jpg');
-}/* Estilos específicos para cada tema */
+    background-image: url('images/custom-bg.jpg');
+}
+
+/* Estilos específicos para cada tema */
 body.tema-default {
     font-family: 'Arial', sans-serif;
 }
@@ -117,14 +137,20 @@ body.tema-galaxy {
 }
 body.tema-custom {
     font-family: 'Verdana', sans-serif;
-}/* Fuentes personalizadas */
+}
+
+/* Fuentes personalizadas */
 body.custom-font-Orbitron { font-family: 'Orbitron', sans-serif; }
 body.custom-font-Space-Mono { font-family: 'Space Mono', monospace; }
 body.custom-font-Comic-Sans-MS { font-family: 'Comic Sans MS', cursive; }
-body.custom-font-Verdana { font-family: 'Verdana', sans-serif; }/* Estilo para el texto */
+body.custom-font-Verdana { font-family: 'Verdana', sans-serif; }
+
+/* Estilo para el texto */
 body h1, body h2, body h3, body p, body label, body button, body a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}button {
+}
+
+button {
     background-color: #00ffcc;
     border: none;
     padding: 10px 20px;
@@ -133,19 +159,27 @@ body h1, body h2, body h3, body p, body label, body button, body a {
     border-radius: 5px;
     font-family: 'Orbitron', sans-serif;
     transition: background-color 0.3s ease, transform 0.1s ease;
-}button:hover {
+}
+
+button:hover {
     background-color: #00b3a0;
     transform: scale(1.05);
-}a {
+}
+
+a {
     color: #00ffcc;
     text-decoration: none;
     margin: 10px;
     display: inline-block;
     font-family: 'Orbitron', sans-serif;
     transition: color 0.3s ease;
-}a:hover {
+}
+
+a:hover {
     color: #00b3a0;
-}/* Estilo para el logo */
+}
+
+/* Estilo para el logo */
 .logo {
     width: 200px;
     height: auto;
@@ -157,10 +191,14 @@ body h1, body h2, body h3, body p, body label, body button, body a {
     background: none;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}.logo:hover {
+}
+
+.logo:hover {
     transform: scale(1.1);
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
-}/* Contador de visitas */
+}
+
+/* Contador de visitas */
 #visit-counter {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.2em;
@@ -168,12 +206,16 @@ body h1, body h2, body h3, body p, body label, body button, body a {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 10px;
     z-index: 10;
-}body.tema-frutiger-metro #visit-counter,
+}
+
+body.tema-frutiger-metro #visit-counter,
 body.tema-pastel #visit-counter,
 body.tema-dark-academia #visit-counter,
 body.tema-frutiger-aero #visit-counter {
     color: #fff;
-}/* Botón de configuración */
+}
+
+/* Botón de configuración */
 #config-btn {
     position: absolute;
     top: 20px;
@@ -191,11 +233,15 @@ body.tema-frutiger-aero #visit-counter {
     justify-content: center;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}#config-btn:hover {
+}
+
+#config-btn:hover {
     background: linear-gradient(135deg, #00b3a0, #00ffcc);
     transform: rotate(90deg);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1);
-}/* Contenedores principales */
+}
+
+/* Contenedores principales */
 .container, #organizador, #config, #custom-capsule-form, #favorites, #stats, #personality-test {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
@@ -203,7 +249,9 @@ body.tema-frutiger-aero #visit-counter {
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-}/* Diseño de la cápsula */
+}
+
+/* Diseño de la cápsula */
 .capsule {
     border-radius: 15px;
     padding: 20px;
@@ -212,7 +260,9 @@ body.tema-frutiger-aero #visit-counter {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 600px;
     border: 1px solid rgba(0, 255, 204, 0.2);
-}#favorite-btn {
+}
+
+#favorite-btn {
     background-color: #ff4444;
     border: none;
     padding: 5px 10px;
@@ -220,20 +270,30 @@ body.tema-frutiger-aero #visit-counter {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-}#favorite-btn.favorited {
+}
+
+#favorite-btn.favorited {
     background-color: #ffaa00;
-}#favorite-btn:hover {
+}
+
+#favorite-btn:hover {
     background-color: #cc0000;
-}/* Grupo de botones */
+}
+
+/* Grupo de botones */
 .button-group {
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
-}/* Estilos para el organizador */
+}
+
+/* Estilos para el organizador */
 #organizador, #config {
     margin-top: 20px;
-}#organizador input[type="date"],
+}
+
+#organizador input[type="date"],
 #organizador input[type="time"],
 #custom-capsule-form input[type="date"] {
     padding: 8px;
@@ -242,7 +302,9 @@ body.tema-frutiger-aero #visit-counter {
     color: #fff;
     border: none;
     margin: 5px 0;
-}#organizador #priority,
+}
+
+#organizador #priority,
 #organizador #tags {
     padding: 8px;
     border-radius: 5px;
@@ -250,55 +312,81 @@ body.tema-frutiger-aero #visit-counter {
     color: #fff;
     border: none;
     margin: 5px 0;
-}#lista .item {
+}
+
+#lista .item {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     background-color: #333;
     margin: 5px 0;
     border-radius: 5px;
-}#lista .item.high { background-color: #ff6666; }
+}
+
+#lista .item.high { background-color: #ff6666; }
 #lista .item.medium { background-color: #ffcc00; }
-#lista .item.low { background-color: #66cc66; }#recordatorios .recordatorio {
+#lista .item.low { background-color: #66cc66; }
+
+#recordatorios .recordatorio {
     background-color: #444;
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
-}#recordatorios .recordatorio.pendiente {
+}
+
+#recordatorios .recordatorio.pendiente {
     background-color: #ff6666;
     color: white;
     font-weight: bold;
-}.back-btn {
+}
+
+.back-btn {
     margin-top: 20px;
-}/* Estilo para el texto de usuario */
+}
+
+/* Estilo para el texto de usuario */
 #user-info {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.2em;
     margin-bottom: 20px;
-}.capsule div {
+}
+
+.capsule div {
     margin: 10px 0;
     font-size: 1.1em;
-}.capsule span {
+}
+
+.capsule span {
     color: #00ffcc;
     cursor: pointer;
     margin-left: 5px;
-}.capsule span:hover {
+}
+
+.capsule span:hover {
     text-decoration: underline;
-}/* Configuración */
+}
+
+/* Configuración */
 #config {
     max-width: 400px;
     margin: 0 auto;
-}#config label {
+}
+
+#config label {
     display: block;
     margin: 10px 0 5px;
-}#config select {
+}
+
+#config select {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     background-color: #333;
     color: #fff;
     border: none;
-}/* Ventana del test de personalidad */
+}
+
+/* Ventana del test de personalidad */
 #personality-test {
     position: fixed;
     top: 50%;
@@ -313,18 +401,28 @@ body.tema-frutiger-aero #visit-counter {
     z-index: 1000;
     color: #fff;
     text-align: center;
-}#personality-test h2 {
+}
+
+#personality-test h2 {
     font-family: 'Orbitron', sans-serif;
     margin-bottom: 20px;
-}#progress-bar {
+}
+
+#progress-bar {
     width: 100%;
     margin-bottom: 10px;
-}#test-content label {
+}
+
+#test-content label {
     display: block;
     margin: 10px 0;
-}#test-content input[type="radio"] {
+}
+
+#test-content input[type="radio"] {
     margin-right: 5px;
-}/* Modal para Zoom In */
+}
+
+/* Modal para Zoom In */
 .modal {
     display: none;
     position: fixed;
@@ -336,7 +434,9 @@ body.tema-frutiger-aero #visit-counter {
     z-index: 2000;
     justify-content: center;
     align-items: center;
-}.modal-content {
+}
+
+.modal-content {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
@@ -345,10 +445,14 @@ body.tema-frutiger-aero #visit-counter {
     text-align: center;
     color: #333;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-}.modal-content button {
+}
+
+.modal-content button {
     margin-top: 15px;
     background-color: #00ffcc;
-}/* Tutorial */
+}
+
+/* Tutorial */
 #tutorial {
     position: fixed;
     top: 50%;
@@ -363,24 +467,36 @@ body.tema-frutiger-aero #visit-counter {
     z-index: 1000;
     color: #fff;
     text-align: left;
-}#tutorial-steps .step {
+}
+
+#tutorial-steps .step {
     margin-bottom: 15px;
     position: relative;
-}#tutorial-steps .arrow {
+}
+
+#tutorial-steps .arrow {
     position: absolute;
     right: -20px;
     top: 50%;
     transform: translateY(-50%);
     animation: tutorialArrow 1.5s infinite;
-}#next-tutorial, #skip-tutorial {
+}
+
+#next-tutorial, #skip-tutorial {
     margin: 5px;
-}/* Favoritos y Estadísticas */
+}
+
+/* Favoritos y Estadísticas */
 #favorites-list, #stats-details {
     margin-top: 20px;
-}#stats-chart {
+}
+
+#stats-chart {
     max-width: 400px;
     margin: 0 auto;
-}/* Responsividad */
+}
+
+/* Responsividad */
 @media (max-width: 600px) {
     .logo {
         width: 150px;
