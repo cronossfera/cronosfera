@@ -1,0 +1,410 @@
+/* Animaciones de transición */
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1 !important;
+}
+
+/* Animación de desplegue para la ventana de configuración */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#config {
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #1a1a1a; /* Fondo de respaldo por si fallan las imágenes */
+}
+
+/* Estilos para temas con imágenes de fondo */
+body.tema-default::before,
+body.tema-frutiger-metro::before,
+body.tema-pastel::before,
+body.tema-vaporwave::before,
+body.tema-dark-academia::before,
+body.tema-cyberpunk::before,
+body.tema-frutiger-aero::before,
+body.tema-galaxy::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+/* Definición de imágenes de fondo para cada tema */
+body.tema-default::before {
+    background-image: url('images/sci-fi-bg.jpg');
+}
+body.tema-frutiger-metro::before {
+    background-image: url('images/frutiger-metro-bg.jpg');
+}
+body.tema-pastel::before {
+    background-image: url('images/pastel-frutiger-metro-bg.jpg');
+}
+body.tema-vaporwave::before {
+    background-image: url('images/vaporwave-bg.jpg');
+}
+body.tema-dark-academia::before {
+    background-image: url('images/dark-academia-frutiger-metro-bg.jpg');
+}
+body.tema-cyberpunk::before {
+    background-image: url('images/frutiger-aero-bg.jpg'); /* Ahora es Frutiger Aero II */
+}
+body.tema-frutiger-aero::before {
+    background-image: url('images/frutiger-aero-bg.jpg');
+}
+body.tema-galaxy::before {
+    background-image: url('images/galaxia-bg.jpg');
+}
+
+/* Estilos específicos para cada tema */
+body.tema-default {
+    font-family: 'Arial', sans-serif;
+}
+body.tema-frutiger-metro {
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+body.tema-pastel {
+    color: #333;
+    font-family: 'Comic Sans MS', cursive;
+}
+body.tema-vaporwave {
+    font-family: 'Arial', sans-serif;
+}
+body.tema-dark-academia {
+    font-family: 'Arial', sans-serif;
+}
+body.tema-cyberpunk {
+    font-family: 'Arial', sans-serif;
+}
+body.tema-frutiger-aero {
+    color: #000;
+    font-family: 'Verdana', sans-serif;
+}
+body.tema-galaxy {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para el texto */
+body h1, body h2, body h3, body p, body label, body button, body a {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    background-color: #00ffcc;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #00b3a0;
+    transform: scale(1.05);
+}
+
+a {
+    color: #00ffcc;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00b3a0;
+}
+
+/* Estilo para el logo */
+.logo {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 10px;
+    background: none;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
+}
+
+/* Contador de visitas */
+#visit-counter {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    color: #00ffcc; /* Color visible para todos los temas */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para mejorar contraste */
+    margin-bottom: 10px;
+    z-index: 10; /* Asegura que esté por encima del fondo */
+}
+
+/* Ajuste de color para temas con texto oscuro */
+body.tema-frutiger-metro #visit-counter,
+body.tema-pastel #visit-counter,
+body.tema-dark-academia #visit-counter,
+body.tema-frutiger-aero #visit-counter {
+    color: #fff; /* Color blanco para temas con fondo oscuro */
+}
+
+/* Botón de configuración (tuerca) */
+#config-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #00ffcc, #00b3a0);
+    border: 2px solid #fff;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#config-btn:hover {
+    background: linear-gradient(135deg, #00b3a0, #00ffcc);
+    transform: rotate(90deg);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 1);
+}
+
+/* Contenedores principales */
+.container, #organizador, #config, #personality-test {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Diseño de la cápsula */
+.capsule {
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+/* Grupo de botones */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Estilos para el organizador */
+#organizador, #config {
+    margin-top: 20px;
+}
+
+#organizador input[type="date"],
+#organizador input[type="time"] {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    margin: 5px 0;
+}
+
+#lista .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+#recordatorios .recordatorio {
+    background-color: #444;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+#recordatorios .recordatorio.pendiente {
+    background-color: #ff6666;
+    color: white;
+    font-weight: bold;
+}
+
+.back-btn {
+    margin-top: 20px;
+}
+
+/* Estilo para el texto de usuario */
+#user-info {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los elementos dentro de la cápsula */
+.capsule div {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.capsule span {
+    color: #00ffcc;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.capsule span:hover {
+    text-decoration: underline;
+}
+
+/* Configuración */
+#config {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#config label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#config select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+/* Ventana del test de personalidad */
+#personality-test {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    max-width: 500px;
+    width: 90%;
+    z-index: 1000;
+    color: #fff;
+    text-align: center;
+}
+
+#personality-test h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#test-content label {
+    display: block;
+    margin: 10px 0;
+}
+
+#test-content input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Modal para Zoom In */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+}
+
+.modal-content button {
+    margin-top: 15px;
+    background-color: #00ffcc;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .logo {
+        width: 150px;
+    }
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .capsule {
+        max-width: 100%;
+        padding: 15px;
+    }
+    #config-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
