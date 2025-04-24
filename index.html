@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a1a">
+    <link rel="manifest" href="manifest.json">
+    <title>Cronosfera</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Press+Start+2P&family=Space+Mono&family=Comic+Sans+MS&family=Verdana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="interactive-2000s" style="position: fixed; top: 0; left: 0; z-index: -1; display: none;"></canvas>
+    <img src="logo.png" alt="Cronosfera Logo" class="logo" aria-label="Volver a la pantalla principal">
+    <button id="config-btn" aria-label="Abrir configuración"></button>
+    <div id="visit-counter" aria-live="polite"></div>
+    <div class="container" role="main">
+        <div id="user-info">
+            <div id="user-stats"></div>
+            <div id="achievements" aria-label="Logros desbloqueados"></div>
+        </div>
+        <div class="capsule">
+            <div id="dato"></div>
+            <div id="cita"></div>
+            <div id="recurso"></div>
+            <button id="favorite-btn" aria-label="Marcar como favorito"></button>
+        </div>
+        <div class="button-group">
+            <button aria-label="Generar cápsula aleatoria">Cápsula Aleatoria</button>
+            <button aria-label="Enviar cápsula por email">Enviar a mi futuro yo</button>
+            <button aria-label="Crear cápsula personalizada">Crear Cápsula</button>
+            <a href="#" aria-label="Abrir organizador dinámico">Organizador Dinámico</a>
+            <button aria-label="Ver cápsulas favoritas">Favoritos</button>
+            <button aria-label="Ver estadísticas">Estadísticas</button>
+        </div>
+    </div>
+    <div id="organizador" style="display: none;" role="region" aria-label="Organizador Dinámico">
+        <h2>Organizador Dinámico</h2>
+        <select id="categoria" aria-label="Seleccionar categoría">
+            <option value="Personal">Personal</option>
+            <option value="Trabajo">Trabajo</option>
+            <option value="Estudio">Estudio</option>
+            <option value="Series">Series</option>
+            <option value="Películas">Películas</option>
+            <option value="Manga">Manga</option>
+            <option value="Manhwa">Manhwa</option>
+            <option value="Tareas">Tareas</option>
+        </select>
+        <input type="text" id="entrada" placeholder="Tarea..." aria-label="Ingresar tarea">
+        <input type="date" id="fecha" aria-label="Seleccionar fecha">
+        <input type="time" id="hora" aria-label="Seleccionar hora">
+        <select id="priority" aria-label="Seleccionar prioridad">
+            <option value="Baja">Baja</option>
+            <option value="Media">Media</option>
+            <option value="Alta">Alta</option>
+        </select>
+        <input type="text" id="tags" placeholder="Etiquetas (separadas por coma)" aria-label="Ingresar etiquetas">
+        <button aria-label="Agregar tarea">Agregar</button>
+        <div id="lista"></div>
+        <div id="agenda">
+            <h3>Agenda</h3>
+            <div id="calendar-container"></div>
+            <div id="recordatorios"></div>
+        </div>
+        <button class="back-btn" aria-label="Volver a la pantalla principal">Volver a Principal</button>
+    </div>
+    <div id="config" style="display: none;" role="region" aria-label="Configuración">
+        <h2>Configuración</h2>
+        <label for="tema">Tema:</label>
+        <select id="tema" aria-label="Seleccionar tema">
+            <option value="default">Default (Sci-Fi)</option>
+            <option value="frutiger-metro">Frutiger Metro</option>
+            <option value="pastel">Pastel</option>
+            <option value="vaporwave">Vaporwave</option>
+            <option value="dark-academia">Dark Academia</option>
+            <option value="cyberpunk">Frutiger Aero II</option>
+            <option value="frutiger-aero">Frutiger Aero</option>
+            <option value="galaxy">Galaxia</option>
+            <option value="custom">Personalizado</option>
+        </select>
+        <label for="idioma">Idioma:</label>
+        <select id="idioma" aria-label="Seleccionar idioma">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+            <option value="jp">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="fr">Français</option>
+        </select>
+        <label for="font">Fuente:</label>
+        <select id="font" aria-label="Seleccionar fuente">
+            <option value="Orbitron">Orbitron</option>
+            <option value="Space Mono">Space Mono</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+        <label>
+            <input type="checkbox" id="autoTheme" aria-label="Activar tema automático"> Tema Automático
+        </label>
+        <label>
+            <input type="checkbox" id="highContrast" aria-label="Activar alto contraste"> Alto Contraste
+        </label>
+        <button aria-label="Aplicar configuración">Aplicar</button>
+        <button class="back-btn" aria-label="Volver a la pantalla principal">Atrás</button>
+    </div>
+    <div id="custom-capsule-form" style="display: none;" role="region" aria-label="Formulario de cápsula personalizada">
+        <h2>Crear Cápsula Personalizada</h2>
+        <input type="text" id="custom-dato" placeholder="Dato" aria-label="Ingresar dato">
+        <input type="text" id="custom-cita" placeholder="Cita" aria-label="Ingresar cita">
+        <input type="text" id="custom-recurso" placeholder="Recurso" aria-label="Ingresar recurso">
+        <input type="date" id="custom-date" aria-label="Seleccionar fecha">
+        <button aria-label="Guardar cápsula">Guardar</button>
+        <button class="back-btn" aria-label="Cerrar formulario">Atrás</button>
+    </div>
+    <div id="favorites" style="display: none;" role="region" aria-label="Cápsulas favoritas">
+        <h2>Cápsulas Favoritas</h2>
+        <div id="favorites-list"></div>
+        <button class="back-btn" aria-label="Volver a la pantalla principal">Volver a Principal</button>
+    </div>
+    <div id="stats" style="display: none;" role="region" aria-label="Estadísticas">
+        <h2>Estadísticas</h2>
+        <canvas id="stats-chart"></canvas>
+        <div id="stats-details"></div>
+        <button class="back-btn" aria-label="Volver a la pantalla principal">Volver a Principal</button>
+    </div>
+    <div id="tutorial" style="display: none;" role="dialog" aria-label="Tutorial interactivo">
+        <h2>Bienvenido a Cronosfera</h2>
+        <div id="tutorial-steps"></div>
+        <button id="next-tutorial" aria-label="Siguiente paso">Siguiente</button>
+        <button id="skip-tutorial" aria-label="Saltar tutorial">Saltar</button>
+    </div>
+    <div id="personality-test" style="display: none;" role="region" aria-label="Test de personalidad">
+        <h2>¿Quién Eres?</h2>
+        <progress id="progress-bar" value="0" max="9" aria-label="Progreso del test"></progress>
+        <p>Pregunta <span id="current-question"></span> de 9</p>
+        <div id="test-content"></div>
+        <button id="prev-btn" aria-label="Pregunta anterior">Anterior</button>
+        <button id="next-btn" aria-label="Siguiente pregunta">Siguiente</button>
+        <button id="submit-btn" aria-label="Enviar test">Enviar</button>
+    </div>
+    <div id="modal" class="modal" role="dialog" aria-label="Modal de zoom">
+        <div class="modal-content">
+            <p id="modal-text"></p>
+            <button aria-label="Cerrar modal">Cerrar</button>
+        </div>
+    </div>
+    <script type="module" src="capsulas.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
